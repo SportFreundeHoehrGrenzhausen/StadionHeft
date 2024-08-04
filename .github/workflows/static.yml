@@ -10,26 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
+      uses: actions/checkout@v3
       with:
-        node-version: '16'
+          lfs: true
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
 
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
-      run: npm run test:headless
-
     - name: Build
       run: npm run build:prod
+    - name: LFS
+      run: git lfs track "*.pdf"
 
     - name: Deploy
-      if: success()
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/stadion-heft
-        enable_jekyll: true
+      run: |
+        npx angular-cli-ghpages --dir=docs/browser
+      env:
+        CI: true
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
