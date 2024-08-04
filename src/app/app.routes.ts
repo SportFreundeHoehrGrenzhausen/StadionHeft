@@ -9,7 +9,7 @@ export const routes: Routes = [
     component: PdfViewerComponent,
   },
   {
-    path: 'browser/latest',
+    path: 'latest',
     component: ExamplePdfViewerComponent,
   },
 ];
