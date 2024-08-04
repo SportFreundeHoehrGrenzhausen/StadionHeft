@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build --base-href /StadionHeft/browser/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:prod": "ng build --configuration production --base-href https://SportFreundeHoehrGrenzhausen.github.io/StadionHeft/"
   },
   "private": true,
   "dependencies": {
