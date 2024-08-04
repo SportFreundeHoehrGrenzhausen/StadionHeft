@@ -27,10 +27,8 @@ jobs:
       run: git lfs track "*.pdf"
 
     - name: Deploy
-      if: success()
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: docs/browser
-        enable_jekyll: true
-        lfs: true
+      run: |
+        npx angular-cli-ghpages --dir=dist/your-angular-app
+      env:
+        CI: true
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
