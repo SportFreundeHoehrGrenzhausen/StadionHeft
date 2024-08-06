@@ -9,7 +9,7 @@ export const routes: Routes = [
     component: PdfViewerComponent,
   },
   {
-    path: 'latest',
-    component: ExamplePdfViewerComponent,
+    path: 'StadionHeft/latest',
+    component: PdfViewerComponent,
   },
 ];
